@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/adesso-forge/ds-alpha/compare/v1.0.0...v1.0.1) (2026-02-26)
+
+
+### Bug Fixes
+
+* improve compat-check to produce meaningful PRs and remove paths-ignore ([f6a90ba](https://github.com/adesso-forge/ds-alpha/commit/f6a90ba9625b6eff2d5e689059d02f020ea64a79))
+
 ## [1.1.3](https://github.com/adesso-forge/ds-alpha/compare/v1.1.2...v1.1.3) (2026-02-26)
 
 
