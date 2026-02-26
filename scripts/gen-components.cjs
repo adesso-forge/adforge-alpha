@@ -25,8 +25,8 @@ for (const c of components) {
   const dir = path.join(srcDir, c);
   fs.mkdirSync(dir, { recursive: true });
   const content = `// alpha-${c} — Pass-through registration (forge-${c} → alpha-${c})
-import '@adesso-forge/core-ds';
-import { registerPassThrough } from '@adesso-forge/ds-shared/components/register';
+import '@adesso-forge/adforge-core';
+import { registerPassThrough } from '@adesso-forge/adforge-shared/components/register';
 
 registerPassThrough('forge-${c}', 'alpha-${c}');
 `;

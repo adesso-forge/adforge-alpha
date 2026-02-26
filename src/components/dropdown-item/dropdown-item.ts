@@ -1,5 +1,5 @@
 // alpha-dropdown-item — Pass-through registration (forge-dropdown-item → alpha-dropdown-item)
-import '@adesso-forge/core-ds';
-import { registerPassThrough } from '@adesso-forge/ds-shared/components/register';
+import '@adesso-forge/adforge-core';
+import { registerPassThrough } from '@adesso-forge/adforge-shared/components/register';
 
 registerPassThrough('forge-dropdown-item', 'alpha-dropdown-item');

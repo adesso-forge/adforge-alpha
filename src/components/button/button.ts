@@ -1,5 +1,5 @@
 // alpha-button — Tier 3 extension of forge-button with client-specific behavior
-import '@adesso-forge/core-ds';
+import '@adesso-forge/adforge-core';
 import { LitElement, css } from 'lit';
 import { property } from 'lit/decorators.js';
 

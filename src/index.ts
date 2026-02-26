@@ -1,4 +1,4 @@
-// @adesso-forge/ds-alpha — Main entry point
+// @adesso-forge/adforge-alpha — Main entry point
 // Registers all alpha-* components and exports theme CSS paths
 
 // Register all components
