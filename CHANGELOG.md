@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/adesso-forge/adforge-alpha/compare/v1.1.7...v1.1.8) (2026-02-26)
+
+
+### Bug Fixes
+
+* publish under new package name adforge-alpha ([74b7805](https://github.com/adesso-forge/adforge-alpha/commit/74b78054be6e8811fef5d4235511d7a64d7cf00d))
+
 ## [1.1.7](https://github.com/adesso-forge/ds-alpha/compare/v1.1.6...v1.1.7) (2026-02-26)
 
 
