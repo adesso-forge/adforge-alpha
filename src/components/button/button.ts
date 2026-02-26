@@ -6,11 +6,11 @@ import { property } from 'lit/decorators.js';
 const ForgeButton = customElements.get('forge-button')!;
 
 export class AlphaButton extends (ForgeButton as unknown as typeof LitElement) {
-  static styles = [
-    ...(Array.isArray((ForgeButton as any).styles)
-      ? (ForgeButton as any).styles
-      : (ForgeButton as any).styles
-        ? [(ForgeButton as any).styles]
+  static css = [
+    ...(Array.isArray((ForgeButton as any).css)
+      ? (ForgeButton as any).css
+      : (ForgeButton as any).css
+        ? [(ForgeButton as any).css]
         : []),
     css`
       /* Alpha corporate button refinements */
