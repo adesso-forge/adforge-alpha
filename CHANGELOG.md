@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/adesso-forge/ds-alpha/compare/v1.1.0...v1.1.1) (2026-02-26)
+
+
+### Bug Fixes
+
+* update core-ds to 1.1.0 ([959cde1](https://github.com/adesso-forge/ds-alpha/commit/959cde18592fcdf16f929e5bea75559ad507d3ed))
+* update ds-shared to 1.2.1 ([cf59720](https://github.com/adesso-forge/ds-alpha/commit/cf59720e03cdbe381d151a2d73edf8c4bf701321))
+
 # [1.1.0](https://github.com/adesso-forge/ds-alpha/compare/v1.0.2...v1.1.0) (2026-02-26)
 
 
