@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/adesso-forge/ds-alpha/compare/v1.0.0...v1.0.1) (2026-02-26)
+
+
+### Bug Fixes
+
+* upgrade Storybook to v10, align components with WA 3.2.x, use static css ([5155170](https://github.com/adesso-forge/ds-alpha/commit/515517063a165e46da6a6ecd24da23b6dcf09f40))
+
 # 1.0.0 (2026-02-26)
 
 
