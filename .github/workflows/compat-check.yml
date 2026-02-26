@@ -1,7 +1,7 @@
-name: Core DS Update Check
+name: Upstream Update Check
 on:
   repository_dispatch:
-    types: [core-ds-update]
+    types: [core-ds-update, ds-shared-update]
 
 jobs:
   check-compatibility:
@@ -12,63 +12,47 @@ jobs:
       issues: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with:
-          repository: adesso-forge/ds-shared
-          path: ds-shared
-      - uses: actions/checkout@v4
-        with:
-          repository: adesso-forge/ds-core
-          path: ds-core
       - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           registry-url: 'https://npm.pkg.github.com'
-      - name: Build ds-shared
-        working-directory: ds-shared
-        run: pnpm install --no-frozen-lockfile && pnpm build
-      - name: Build ds-core
-        working-directory: ds-core
+      - name: Get pnpm store path
+        id: pnpm-cache
+        run: echo "store=$(pnpm store path)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.store }}
+          key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: pnpm-${{ runner.os }}-
+      - name: Determine update type
+        id: update
         run: |
-          node -e "
-            const pkg = require('./package.json');
-            pkg.pnpm = pkg.pnpm || {};
-            pkg.pnpm.overrides = { '@adesso-forge/ds-shared': 'link:../ds-shared' };
-            require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
-          "
-          pnpm install --no-frozen-lockfile
-          pnpm build
-      - name: Install and build with updated core
+          EVENT="${{ github.event.action }}"
+          VERSION="${{ github.event.client_payload.version }}"
+          if [ "$EVENT" = "core-ds-update" ]; then
+            echo "package=@adesso-forge/core-ds" >> "$GITHUB_OUTPUT"
+            echo "dep_flag=" >> "$GITHUB_OUTPUT"
+            echo "slug=core-ds" >> "$GITHUB_OUTPUT"
+          elif [ "$EVENT" = "ds-shared-update" ]; then
+            echo "package=@adesso-forge/ds-shared" >> "$GITHUB_OUTPUT"
+            echo "dep_flag=-D" >> "$GITHUB_OUTPUT"
+            echo "slug=ds-shared" >> "$GITHUB_OUTPUT"
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+      - name: Install with updated dependency
         id: build
         run: |
-          node -e "
-            const pkg = require('./package.json');
-            pkg.pnpm = pkg.pnpm || {};
-            pkg.pnpm.overrides = pkg.pnpm.overrides || {};
-            pkg.pnpm.overrides['@adesso-forge/ds-shared'] = 'link:./ds-shared';
-            pkg.pnpm.overrides['@adesso-forge/core-ds'] = 'link:./ds-core';
-            require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
-          "
-          pnpm install --no-frozen-lockfile
+          pnpm add ${{ steps.update.outputs.dep_flag }} ${{ steps.update.outputs.package }}@${{ steps.update.outputs.version }}
           pnpm build
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create PR if passing
-        if: steps.build.outcome == 'success'
+      - name: Update compatibility.json
+        if: steps.build.outcome == 'success' && steps.update.outputs.slug == 'core-ds'
         run: |
-          VERSION="${{ github.event.client_payload.version }}"
-
-          # Clean up checked-out repos
-          rm -rf ds-shared ds-core
-
-          # Revert pnpm.overrides injection from package.json
-          git checkout -- package.json
-          git checkout -- pnpm-lock.yaml || true
-
-          # Update compatibility.json with the new tested version
+          VERSION="${{ steps.update.outputs.version }}"
           node -e "
             const fs = require('fs');
             const compat = JSON.parse(fs.readFileSync('compatibility.json', 'utf8'));
@@ -81,31 +65,45 @@ jobs:
             }
             fs.writeFileSync('compatibility.json', JSON.stringify(compat, null, 2) + '\n');
           "
+      - name: Create PR if passing
+        if: steps.build.outcome == 'success'
+        run: |
+          SLUG="${{ steps.update.outputs.slug }}"
+          VERSION="${{ steps.update.outputs.version }}"
+          PACKAGE="${{ steps.update.outputs.package }}"
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b fix/core-ds-$VERSION
-          git add compatibility.json
-          git commit -m "fix: update core-ds compatibility to $VERSION"
-          git push origin fix/core-ds-$VERSION
-          gh pr create \
-            --title "fix: update core-ds compatibility to $VERSION" \
-            --body "## Core DS Update
 
-          **New version:** \`@adesso-forge/core-ds@$VERSION\`
+          BRANCH="fix/${SLUG}-${VERSION}"
+          git push origin --delete "$BRANCH" 2>/dev/null || true
 
-          ### Changes
-          - Updated \`compatibility.json\` to track tested version \`$VERSION\`
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "fix: update ${SLUG} to ${VERSION}"
+          git push origin "$BRANCH"
+
+          if ! gh pr create \
+            --title "fix: update ${SLUG} to ${VERSION}" \
+            --body "## Upstream Update
+
+          **Package:** \`${PACKAGE}@${VERSION}\`
 
           ### Verification
-          Automated compatibility check **passed** — build succeeded against core-ds@$VERSION."
+          Automated compatibility check **passed** — build succeeded."; then
+            gh issue create \
+              --title "Failed to create PR for ${SLUG}@${VERSION}" \
+              --body "Compatibility check passed but PR creation failed. Manual action needed."
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create issue if failing
         if: steps.build.outcome == 'failure'
         run: |
+          SLUG="${{ steps.update.outputs.slug }}"
+          VERSION="${{ steps.update.outputs.version }}"
           gh issue create \
-            --title "Incompatible with core-ds@${{ github.event.client_payload.version }}" \
-            --body "Automated compatibility check failed. Manual intervention required."
+            --title "Incompatible with ${SLUG}@${VERSION}" \
+            --body "Automated compatibility check against ${{ steps.update.outputs.package }}@${VERSION} failed. Manual intervention required."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
