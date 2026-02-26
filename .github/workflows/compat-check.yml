@@ -58,6 +58,8 @@ jobs:
       - name: Create PR if passing
         if: success()
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b chore/core-ds-${{ github.event.client_payload.version }}
           git add -A
           git commit -m "chore: bump @adesso-forge/core-ds to ${{ github.event.client_payload.version }}" --allow-empty
