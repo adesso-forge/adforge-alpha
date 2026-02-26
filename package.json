@@ -1,7 +1,7 @@
 {
   "name": "@adesso-forge/ds-alpha",
   "version": "1.0.2",
-  "description": "Alpha client design system — Blue Corporate theme built on adesso forge Core DS",
+  "description": "Alpha client design system \u2014 Blue Corporate theme built on adesso forge Core DS",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,7 +34,7 @@
     "lit": "^3.2.0"
   },
   "devDependencies": {
-    "@adesso-forge/ds-shared": "1.0.0",
+    "@adesso-forge/ds-shared": "1.2.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@storybook/addon-a11y": "^10.0.0",
