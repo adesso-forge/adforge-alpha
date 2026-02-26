@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/adesso-forge/ds-alpha/compare/v1.1.4...v1.1.5) (2026-02-26)
+
+
+### Bug Fixes
+
+* update ds-shared to 1.2.2 ([f8d78fa](https://github.com/adesso-forge/ds-alpha/commit/f8d78faf435b421ce84fec3acdf0a6d229c2bc2d))
+
 ## [1.1.4](https://github.com/adesso-forge/ds-alpha/compare/v1.1.3...v1.1.4) (2026-02-26)
 
 
