@@ -1,0 +1,27 @@
+/* @adesso-forge/ds-alpha — Shared tokens (scheme-agnostic)
+ * Blue Corporate: professional, clean, structured
+ */
+
+:root {
+  /* Typography — corporate feel */
+  --wa-font-family-sans: 'IBM Plex Sans', 'Inter', system-ui, sans-serif;
+  --wa-font-weight-action: 600;
+
+  /* Spacing — slightly more generous */
+  --wa-space-s: 0.5rem;
+  --wa-space-m: 1rem;
+  --wa-space-l: 1.75rem;
+
+  /* Borders — crisp corporate edges */
+  --wa-border-radius-s: 0.25rem;
+  --wa-border-radius-m: 0.5rem;
+  --wa-border-radius-l: 0.75rem;
+
+  /* Focus */
+  --wa-focus-ring-width: 2px;
+  --wa-focus-ring-color: var(--wa-color-brand-500);
+
+  /* Transitions */
+  --wa-transition-fast: 100ms;
+  --wa-transition-medium: 180ms;
+}

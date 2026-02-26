@@ -1,0 +1,30 @@
+/* @adesso-forge/ds-alpha — Light mode — "Blue Corporate" */
+
+:root,
+.wa-light,
+.wa-dark .wa-invert {
+  /* Brand palette — corporate blue */
+  --wa-color-brand-50: #EBF5FF;
+  --wa-color-brand-100: #CCE5FF;
+  --wa-color-brand-200: #99CAFF;
+  --wa-color-brand-300: #66B0FF;
+  --wa-color-brand-400: #3395FF;
+  --wa-color-brand-500: #0052CC;
+  --wa-color-brand-600: #003D99;
+  --wa-color-brand-700: #002E73;
+  --wa-color-brand-800: #001F4D;
+  --wa-color-brand-900: #001433;
+
+  /* Neutral palette — cool gray */
+  --wa-color-neutral-95: #F7F8FA;
+  --wa-color-neutral-90: #E8EBF0;
+  --wa-color-neutral-80: #C8CDD6;
+  --wa-color-neutral-50: #6B7280;
+  --wa-color-neutral-20: #374151;
+  --wa-color-neutral-10: #1F2937;
+
+  /* Surfaces */
+  --wa-color-surface-default: #FFFFFF;
+  --wa-color-surface-raised: var(--wa-color-neutral-95);
+  --wa-color-surface-lowered: var(--wa-color-neutral-90);
+}

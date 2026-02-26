@@ -1,0 +1,77 @@
+name: Core DS Update Check
+on:
+  repository_dispatch:
+    types: [core-ds-update]
+
+jobs:
+  check-compatibility:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: adesso-forge/ds-shared
+          path: ds-shared
+      - uses: actions/checkout@v4
+        with:
+          repository: adesso-forge/ds-core
+          path: ds-core
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Build ds-shared
+        working-directory: ds-shared
+        run: pnpm install --no-frozen-lockfile && pnpm build
+      - name: Build ds-core
+        working-directory: ds-core
+        run: |
+          node -e "
+            const pkg = require('./package.json');
+            pkg.pnpm = pkg.pnpm || {};
+            pkg.pnpm.overrides = { '@adesso-forge/ds-shared': 'link:../ds-shared' };
+            require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+          pnpm install --no-frozen-lockfile
+          pnpm build
+      - name: Install and build with updated core
+        run: |
+          node -e "
+            const pkg = require('./package.json');
+            pkg.pnpm = pkg.pnpm || {};
+            pkg.pnpm.overrides = pkg.pnpm.overrides || {};
+            pkg.pnpm.overrides['@adesso-forge/ds-shared'] = 'link:./ds-shared';
+            pkg.pnpm.overrides['@adesso-forge/core-ds'] = 'link:./ds-core';
+            require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+          pnpm install --no-frozen-lockfile
+          pnpm build
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create PR if passing
+        if: success()
+        run: |
+          git checkout -b chore/core-ds-${{ github.event.client_payload.version }}
+          git add -A
+          git commit -m "chore: bump @adesso-forge/core-ds to ${{ github.event.client_payload.version }}" --allow-empty
+          git push origin chore/core-ds-${{ github.event.client_payload.version }}
+          gh pr create \
+            --title "chore: bump core-ds to ${{ github.event.client_payload.version }}" \
+            --body "Automated compatibility check passed. Build succeeded."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create issue if failing
+        if: failure()
+        run: |
+          gh issue create \
+            --title "Incompatible with core-ds@${{ github.event.client_payload.version }}" \
+            --body "Automated compatibility check failed. Manual intervention required."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

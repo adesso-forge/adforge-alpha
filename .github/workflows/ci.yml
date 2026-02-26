@@ -1,0 +1,51 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: adesso-forge/ds-shared
+          path: ds-shared
+      - uses: actions/checkout@v4
+        with:
+          repository: adesso-forge/ds-core
+          path: ds-core
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Build ds-shared
+        working-directory: ds-shared
+        run: pnpm install --no-frozen-lockfile && pnpm build
+      - name: Build ds-core
+        working-directory: ds-core
+        run: |
+          node -e "
+            const pkg = require('./package.json');
+            pkg.pnpm = pkg.pnpm || {};
+            pkg.pnpm.overrides = { '@adesso-forge/ds-shared': 'link:../ds-shared' };
+            require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+          pnpm install --no-frozen-lockfile
+          pnpm build
+      - name: Override dependency resolutions
+        run: |
+          node -e "
+            const pkg = require('./package.json');
+            pkg.pnpm = pkg.pnpm || {};
+            pkg.pnpm.overrides = pkg.pnpm.overrides || {};
+            pkg.pnpm.overrides['@adesso-forge/ds-shared'] = 'link:./ds-shared';
+            pkg.pnpm.overrides['@adesso-forge/core-ds'] = 'link:./ds-core';
+            require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+      - run: pnpm install --no-frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: pnpm type-check
+      - run: pnpm build

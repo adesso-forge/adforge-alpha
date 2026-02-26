@@ -1,0 +1,28 @@
+{
+  "name": "alpha",
+  "displayName": "Alpha Test Design System — Blue Corporate",
+  "scope": "@adesso-forge",
+  "prefix": "alpha",
+  "origin": {
+    "package": "@awesome.me/webawesome",
+    "version": "^3.2.0"
+  },
+  "core": {
+    "package": "@adesso-forge/core-ds",
+    "version": "^1.0.0"
+  },
+  "registry": "https://npm.pkg.github.com",
+  "components": {
+    "extended": ["button"],
+    "excluded": [],
+    "customPrefix": "alpha"
+  },
+  "themes": {
+    "shared": "src/themes/shared.css",
+    "light": "src/themes/light.css",
+    "dark": "src/themes/dark.css"
+  },
+  "storybook": {
+    "port": 6007
+  }
+}
