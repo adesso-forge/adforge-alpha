@@ -42,6 +42,7 @@ jobs:
           pnpm install --no-frozen-lockfile
           pnpm build
       - name: Install and build with updated core
+        id: build
         run: |
           node -e "
             const pkg = require('./package.json');
@@ -56,8 +57,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create PR if passing
-        if: success()
+        if: steps.build.outcome == 'success'
         run: |
+          rm -rf ds-shared ds-core
+          git checkout -- pnpm-lock.yaml || true
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b chore/core-ds-${{ github.event.client_payload.version }}
@@ -70,7 +73,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create issue if failing
-        if: failure()
+        if: steps.build.outcome == 'failure'
         run: |
           gh issue create \
             --title "Incompatible with core-ds@${{ github.event.client_payload.version }}" \
