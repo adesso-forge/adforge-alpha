@@ -2,14 +2,15 @@
   "package": "@adesso-forge/ds-alpha",
   "version": "1.0.0",
   "compatibility": {
-    "@adesso-forge/core-ds": "^1.1.0",
+    "@adesso-forge/core-ds": "^1.1.1",
     "@awesome.me/webawesome": "^3.2.0"
   },
   "tested": {
     "@adesso-forge/core-ds": [
       "1.0.0",
       "1.0.2",
-      "1.1.0"
+      "1.1.0",
+      "1.1.1"
     ],
     "@awesome.me/webawesome": [
       "3.2.1"
