@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/adesso-forge/ds-alpha/compare/v1.1.2...v1.1.3) (2026-02-26)
+
+
+### Bug Fixes
+
+* compat-check cleanup embedded repos and use step outcome for conditionals ([65a0584](https://github.com/adesso-forge/ds-alpha/commit/65a05846c677ac73dbd0f096a21dab3c30fae1aa))
+
 ## [1.1.2](https://github.com/adesso-forge/ds-alpha/compare/v1.1.1...v1.1.2) (2026-02-26)
 
 
