@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/adesso-forge/ds-alpha/compare/v1.0.2...v1.1.0) (2026-02-26)
+
+
+### Features
+
+* add Storybook stories for all pass-through components ([6bfb12e](https://github.com/adesso-forge/ds-alpha/commit/6bfb12ee8b0254bd8ba973f8b0e73a66a2a52f9a))
+
 ## [1.0.2](https://github.com/adesso-forge/ds-alpha/compare/v1.0.1...v1.0.2) (2026-02-26)
 
 
