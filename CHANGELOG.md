@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/adesso-forge/ds-alpha/compare/v1.1.1...v1.1.2) (2026-02-26)
+
+
+### Bug Fixes
+
+* add repository field to package.json, remove bootstrap step ([5a11c12](https://github.com/adesso-forge/ds-alpha/commit/5a11c124ee12acc1006284a4d3bfeb95babb1274))
+
 ## [1.1.1](https://github.com/adesso-forge/ds-alpha/compare/v1.1.0...v1.1.1) (2026-02-26)
 
 
