@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/adesso-forge/ds-alpha/compare/v1.1.5...v1.1.6) (2026-02-26)
+
+
+### Bug Fixes
+
+* update core-ds to 1.1.3 ([e71cb3c](https://github.com/adesso-forge/ds-alpha/commit/e71cb3ca93acbbc671eb74780c761884890ff33d))
+
 ## [1.1.5](https://github.com/adesso-forge/ds-alpha/compare/v1.1.4...v1.1.5) (2026-02-26)
 
 
