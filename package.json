@@ -55,8 +55,8 @@
       "esbuild"
     ],
     "overrides": {
-      "@adesso-forge/ds-shared": "link:../ds-shared",
-      "@adesso-forge/core-ds": "link:../ds-core"
+      "@adesso-forge/ds-shared": "link:./ds-shared",
+      "@adesso-forge/core-ds": "link:./ds-core"
     }
   },
   "publishConfig": {
