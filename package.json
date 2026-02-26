@@ -1,7 +1,7 @@
 {
   "name": "@adesso-forge/ds-alpha",
-  "version": "1.0.2",
-  "description": "Alpha client design system \u2014 Blue Corporate theme built on adesso forge Core DS",
+  "version": "1.1.0",
+  "description": "Alpha client design system — Blue Corporate theme built on adesso forge Core DS",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
