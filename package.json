@@ -1,6 +1,6 @@
 {
   "name": "@adesso-forge/adforge-alpha",
-  "version": "1.1.10",
+  "version": "1.2.0",
   "description": "Alpha client design system — Blue Corporate theme built on adesso forge Core DS",
   "type": "module",
   "main": "dist/index.js",
