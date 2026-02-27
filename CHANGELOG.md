@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/adesso-forge/adforge-alpha/compare/v1.2.0...v1.2.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* update adforge-core to 1.2.0 ([ff04e3a](https://github.com/adesso-forge/adforge-alpha/commit/ff04e3a31fbc239df8b820f67967e859f2dca212))
+
 # [1.2.0](https://github.com/adesso-forge/adforge-alpha/compare/v1.1.10...v1.2.0) (2026-02-27)
 
 
