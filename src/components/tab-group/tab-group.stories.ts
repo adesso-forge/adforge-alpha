@@ -12,5 +12,10 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () =>
-    html`<alpha-tab-group><alpha-tab slot="nav" panel="general">General</alpha-tab><alpha-tab slot="nav" panel="details">Details</alpha-tab><alpha-tab-panel name="general">General content</alpha-tab-panel><alpha-tab-panel name="details">Details content</alpha-tab-panel></alpha-tab-group>`,
+    html`<alpha-tab-group
+      ><alpha-tab slot="nav" panel="general">General</alpha-tab
+      ><alpha-tab slot="nav" panel="details">Details</alpha-tab
+      ><alpha-tab-panel name="general">General content</alpha-tab-panel
+      ><alpha-tab-panel name="details">Details content</alpha-tab-panel></alpha-tab-group
+    >`,
 };

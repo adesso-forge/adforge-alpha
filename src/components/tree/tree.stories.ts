@@ -12,5 +12,8 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () =>
-    html`<alpha-tree><alpha-tree-item>Item 1<alpha-tree-item>Nested 1</alpha-tree-item></alpha-tree-item><alpha-tree-item>Item 2</alpha-tree-item></alpha-tree>`,
+    html`<alpha-tree
+      ><alpha-tree-item>Item 1<alpha-tree-item>Nested 1</alpha-tree-item></alpha-tree-item
+      ><alpha-tree-item>Item 2</alpha-tree-item></alpha-tree
+    >`,
 };

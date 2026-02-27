@@ -12,5 +12,11 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () =>
-    html`<alpha-carousel-item><div style="display:flex;align-items:center;justify-content:center;height:200px;background:var(--wa-color-neutral-100)">Carousel Item</div></alpha-carousel-item>`,
+    html`<alpha-carousel-item
+      ><div
+        style="display:flex;align-items:center;justify-content:center;height:200px;background:var(--wa-color-neutral-100)"
+      >
+        Carousel Item
+      </div></alpha-carousel-item
+    >`,
 };

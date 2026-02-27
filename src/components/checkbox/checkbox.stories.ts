@@ -11,6 +11,5 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () =>
-    html`<alpha-checkbox>Check me</alpha-checkbox>`,
+  render: () => html`<alpha-checkbox>Check me</alpha-checkbox>`,
 };

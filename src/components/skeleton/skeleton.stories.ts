@@ -11,11 +11,13 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () =>
-    html`<alpha-skeleton effect="sheen"></alpha-skeleton>`,
+  render: () => html`<alpha-skeleton effect="sheen"></alpha-skeleton>`,
 };
 
 export const Circle: Story = {
   render: () =>
-    html`<alpha-skeleton effect="sheen" style="width:50px;height:50px;--border-radius:50%"></alpha-skeleton>`,
+    html`<alpha-skeleton
+      effect="sheen"
+      style="width:50px;height:50px;--border-radius:50%"
+    ></alpha-skeleton>`,
 };

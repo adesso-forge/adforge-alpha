@@ -12,5 +12,8 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () =>
-    html`<alpha-button-group><alpha-button>Left</alpha-button><alpha-button>Center</alpha-button><alpha-button>Right</alpha-button></alpha-button-group>`,
+    html`<alpha-button-group
+      ><alpha-button>Left</alpha-button><alpha-button>Center</alpha-button
+      ><alpha-button>Right</alpha-button></alpha-button-group
+    >`,
 };

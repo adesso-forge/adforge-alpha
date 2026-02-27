@@ -12,5 +12,7 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () =>
-    html`<alpha-tooltip content="Tooltip text"><alpha-button slot="content">Hover me</alpha-button></alpha-tooltip>`,
+    html`<alpha-tooltip content="Tooltip text"
+      ><alpha-button slot="content">Hover me</alpha-button></alpha-tooltip
+    >`,
 };

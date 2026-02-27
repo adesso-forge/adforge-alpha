@@ -12,5 +12,11 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () =>
-    html`<alpha-intersection-observer><div style="height:100px;background:var(--wa-color-neutral-100);display:flex;align-items:center;justify-content:center">Observed element</div></alpha-intersection-observer>`,
+    html`<alpha-intersection-observer
+      ><div
+        style="height:100px;background:var(--wa-color-neutral-100);display:flex;align-items:center;justify-content:center"
+      >
+        Observed element
+      </div></alpha-intersection-observer
+    >`,
 };

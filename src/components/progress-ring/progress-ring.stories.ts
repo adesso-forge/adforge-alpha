@@ -11,6 +11,5 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () =>
-    html`<alpha-progress-ring value="60"></alpha-progress-ring>`,
+  render: () => html`<alpha-progress-ring value="60"></alpha-progress-ring>`,
 };

@@ -12,5 +12,9 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () =>
-    html`<alpha-format-number value="1234.56" type="currency" currency="EUR"></alpha-format-number>`,
+    html`<alpha-format-number
+      value="1234.56"
+      type="currency"
+      currency="EUR"
+    ></alpha-format-number>`,
 };

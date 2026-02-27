@@ -12,5 +12,8 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () =>
-    html`<alpha-details><span slot="summary">Click to expand</span>This is the details content that was hidden.</alpha-details>`,
+    html`<alpha-details
+      ><span slot="summary">Click to expand</span>This is the details content that was
+      hidden.</alpha-details
+    >`,
 };

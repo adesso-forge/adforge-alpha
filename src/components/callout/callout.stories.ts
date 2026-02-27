@@ -11,6 +11,5 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () =>
-    html`<alpha-callout>This is an important callout message.</alpha-callout>`,
+  render: () => html`<alpha-callout>This is an important callout message.</alpha-callout>`,
 };

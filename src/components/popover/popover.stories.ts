@@ -12,5 +12,8 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () =>
-    html`<alpha-popover><alpha-button slot="anchor">Hover me</alpha-button><div>Popover content</div></alpha-popover>`,
+    html`<alpha-popover
+      ><alpha-button slot="anchor">Hover me</alpha-button>
+      <div>Popover content</div></alpha-popover
+    >`,
 };

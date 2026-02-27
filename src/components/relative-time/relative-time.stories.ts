@@ -11,6 +11,5 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () =>
-    html`<alpha-relative-time date="2026-02-25T12:00:00"></alpha-relative-time>`,
+  render: () => html`<alpha-relative-time date="2026-02-25T12:00:00"></alpha-relative-time>`,
 };

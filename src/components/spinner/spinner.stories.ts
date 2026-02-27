@@ -11,6 +11,5 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () =>
-    html`<alpha-spinner></alpha-spinner>`,
+  render: () => html`<alpha-spinner></alpha-spinner>`,
 };
