@@ -26,6 +26,10 @@
     "type-check": "tsc --noEmit",
     "dev": "storybook dev -p 6007",
     "build-storybook": "storybook build",
+    "lint": "eslint src/",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "prepare": "husky",
     "clean": "rm -rf dist/"
   },
   "dependencies": {
@@ -35,16 +39,28 @@
   },
   "devDependencies": {
     "@adesso-forge/adforge-shared": "1.2.4",
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@storybook/addon-a11y": "^10.0.0",
     "@storybook/addon-docs": "^10.0.0",
     "@storybook/web-components-vite": "^10.0.0",
     "@types/node": "^22.0.0",
+    "eslint": "^9.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.0.0",
     "semantic-release": "^25.0.0",
     "storybook": "^10.0.0",
     "typescript": "^5.7.0",
     "vite": "^6.0.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "engines": {
     "node": ">=22.0.0"
@@ -52,7 +68,10 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
-    ]
+    ],
+    "overrides": {
+      "@adesso-forge/adforge-shared": "link:../adforge-shared"
+    }
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
