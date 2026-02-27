@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@adesso-forge/adforge-core':
-        specifier: 1.1.6
-        version: 1.1.6(@floating-ui/utils@0.2.10)(@types/react@19.2.14)
+        specifier: 1.1.7
+        version: 1.1.7(@floating-ui/utils@0.2.10)(@types/react@19.2.14)
       '@awesome.me/webawesome':
         specifier: ^3.2.0
         version: 3.2.1(@floating-ui/utils@0.2.10)(@types/react@19.2.14)
@@ -66,8 +66,8 @@ packages:
   '@actions/io@3.0.2':
     resolution: {integrity: sha512-nRBchcMM+QK1pdjO7/idu86rbJI5YHUKCvKs0KxnSYbVe3F51UfGxuZX4Qy/fWlp6l7gWFwIkrOzN+oUK03kfw==}
 
-  '@adesso-forge/adforge-core@1.1.6':
-    resolution: {integrity: sha512-/6MVamXes7qIhxxuwmevClmfziBe7s8w/LB9EvL0jpbzhwVPgUbP+pw+NWgWY75HkDAm22cwonvGkW9wnXlGzA==, tarball: https://npm.pkg.github.com/download/@adesso-forge/adforge-core/1.1.6/a6c47689c0ad4e260c3439384ca9cdcd0743f73d}
+  '@adesso-forge/adforge-core@1.1.7':
+    resolution: {integrity: sha512-1OZa5dzkLKczmbAIjU4cD60SogSTLeXyphoBHsiFPUhd9ifz0cQkPWrf3R8/50rj/snWXZgGJ/WTSpUHON25uA==, tarball: https://npm.pkg.github.com/download/@adesso-forge/adforge-core/1.1.7/269929f1df0f2bfda33a6dc4a53a702eb545fbd2}
     engines: {node: '>=22.0.0'}
 
   '@adesso-forge/adforge-shared@1.2.4':
@@ -2137,7 +2137,7 @@ snapshots:
 
   '@actions/io@3.0.2': {}
 
-  '@adesso-forge/adforge-core@1.1.6(@floating-ui/utils@0.2.10)(@types/react@19.2.14)':
+  '@adesso-forge/adforge-core@1.1.7(@floating-ui/utils@0.2.10)(@types/react@19.2.14)':
     dependencies:
       '@awesome.me/webawesome': 3.2.1(@floating-ui/utils@0.2.10)(@types/react@19.2.14)
       lit: 3.3.2
